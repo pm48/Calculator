@@ -33,9 +33,11 @@ class Calculator
     operators.add("-");
     operators.add("*");
     operators.add("/");
+    // With current implementation, operators can be taken from the static map as well.
     executor.setOperators(operators);
     executor.setInputString(paramString);
     return executor.getResult();
+
   }
 
 }

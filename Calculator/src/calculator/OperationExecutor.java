@@ -51,12 +51,12 @@ class OperationExecutor
         operandStack.push(Double.valueOf(input));
       }
       else {
-        int precedence = Operation.getPrecedence(input);
+        int precedence = OperationFactory.precedenceMap.get(input);
         if (operatorStack.isEmpty()) {
           operatorStack.push(input);
         }
         else {
-          int prevPrecedence = Operation.getPrecedence(operatorStack.peek());
+          int prevPrecedence = OperationFactory.precedenceMap.get(operatorStack.peek());
           if (precedence <= prevPrecedence) {
             String op = operatorStack.pop();
             evaluateOp(op);
@@ -84,8 +84,8 @@ class OperationExecutor
 
   private void evaluateOp(String op)
   {
-
-    switch (op) {
+    OperationFactory.commandMap.get(op).execute(this);
+   /* switch (op) {
       case "+":
         Add add = new Add();
         add.execute(this);
@@ -104,7 +104,7 @@ class OperationExecutor
         break;
       default:
         throw new RuntimeException("This operation is not supported");
-    }
+    }*/
   }
 
 }

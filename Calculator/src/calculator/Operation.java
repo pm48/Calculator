@@ -5,6 +5,7 @@
  */
 package calculator;
 
+import java.util.HashMap;
 import java.util.Stack;
 
 /**
@@ -16,30 +17,7 @@ abstract class Operation
   private static int precedence;
   //To check for binary/unary operations
   protected boolean lookahead;
-  protected OperationExecutor executor;
   protected Stack<Double> stack;
-
-  public static int getPrecedence(String input)
-  {
-    switch(input)
-    {
-      case "+":
-        precedence = 1;
-        break;
-      case "-":
-        precedence = 1;
-        break;
-      case "*":
-        precedence = 2;
-        break;
-      case "/":
-        precedence = 2;
-        break;
-      default:
-        throw new RuntimeException("This operation is not supported");
-    }
-    return precedence;
-  }
 
   protected boolean getLookahead()
   {
